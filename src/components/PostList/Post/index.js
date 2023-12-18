@@ -12,19 +12,19 @@ import {
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import moment from 'moment';
-// import useStyles from './styles';
-// import { useDispatch } from 'react-redux';
-// import { updatePost } from '../../../redux/actions';
+import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import { updatePost } from '../../../redux/actions';
 
 export default function Post({ post }) {
-    //   const classes = useStyles();
-    //   const dispatch = useDispatch();
+    const classes = useStyles();
+    const dispatch = useDispatch();
 
-    //   const onLikeBtnClick = React.useCallback(() => {
-    //     dispatch(
-    //       updatePost.updatePostRequest({ ...post, likeCount: post.likeCount + 1 })
-    //     );
-    //   }, [dispatch, post]);
+    const onLikeBtnClick = React.useCallback(() => {
+        dispatch(
+            updatePost.updatePostRequest({ ...post, likeCount: post.likeCount + 1 })
+        );
+    }, [dispatch, post]);
 
     return (
         <Card>
