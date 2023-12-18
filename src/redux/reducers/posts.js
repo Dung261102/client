@@ -1,6 +1,5 @@
 import { INIT_STATE } from '../../constant';
-import { getPosts, getType } from '../actions';
-// import { getPosts, getType, createPost, updatePost } from '../actions';
+import { getPosts, getType, createPost, updatePost } from '../actions';
 
 
 
@@ -27,20 +26,21 @@ export default function postsReducers(state = INIT_STATE.posts, action) {
                 isLoading: false,
             };
 
+        //createPos
+        case getType(createPost.createPostSuccess):
+            return {
+                ...state,
+                data: [...state.data, action.payload],
+            };
 
-        //     case getType(createPost.createPostSuccess):
-        //       return {
-        //         ...state,
-        //         data: [...state.data, action.payload],
-        //       };
-
-        //     case getType(updatePost.updatePostSuccess):
-        //       return {
-        //         ...state,
-        //         data: state.data.map((post) =>
-        //           post._id === action.payload._id ? action.payload : post
-        //         ),
-        //       };
+        //UpdatePost
+        case getType(updatePost.updatePostSuccess):
+            return {
+                ...state,
+                data: state.data.map((post) =>
+                    post._id === action.payload._id ? action.payload : post
+                ),
+            };
 
 
         default:
