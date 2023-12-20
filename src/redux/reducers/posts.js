@@ -1,6 +1,6 @@
 import { INIT_STATE } from '../../constant';
-import { getPosts, getType, createPost, updatePost } from '../actions';
-
+import { getPosts, getType, createPost, updatePost, deletePost } from '../actions';
+// import { getPosts, getType, createPost, updatePost } from '../actions';
 
 
 export default function postsReducers(state = INIT_STATE.posts, action) {
@@ -26,7 +26,7 @@ export default function postsReducers(state = INIT_STATE.posts, action) {
                 isLoading: false,
             };
 
-        //createPos
+        //createPost
         case getType(createPost.createPostSuccess):
             return {
                 ...state,
@@ -42,8 +42,27 @@ export default function postsReducers(state = INIT_STATE.posts, action) {
                 ),
             };
 
+        // Xóa bài viết thành công
+        // case getType(deletePost.deletePostSuccess):
+        //     return {
+        //         ...state,
+        //         data: state.data.filter((post) =>
+        //             post._id !== action.payload
+        //         ),
+        //     };
+
+        case getType(deletePost.deletePostSuccess):
+            const deletedPostId = action.payload; // Giả sử payload chứa postId cần xóa
+
+            return {
+                ...state,
+                data: state.data.filter(post =>
+                    post._id !== deletedPostId),
+            };
 
         default:
             return state;
     }
 }
+
+// export default posts;
