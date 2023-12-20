@@ -1,25 +1,33 @@
 import { createActions, createAction } from 'redux-actions';
 
+
 export const getType = (reduxAction) => {
-    return reduxAction().type;
+  return reduxAction().type;
 };
 
 export const getPosts = createActions({
-    getPostsRequest: undefined,
-    getPostsSuccess: (payload) => payload,
-    getPostsFailure: (err) => err,
+  getPostsRequest: undefined,
+  getPostsSuccess: (payload) => payload,
+  getPostsFailure: (err) => err,
 });
 
 export const createPost = createActions({
-    createPostRequest: (payload) => payload,
-    createPostSuccess: (payload) => payload,
-    createPostFailure: (err) => err,
+  createPostRequest: (payload) => payload,
+  createPostSuccess: (payload) => payload,
+  createPostFailure: (err) => err,
 });
 
 export const updatePost = createActions({
-    updatePostRequest: (payload) => payload,
-    updatePostSuccess: (payload) => payload,
-    updatePostFailure: (err) => err,
+  updatePostRequest: (payload) => payload,
+  updatePostSuccess: (payload) => payload,
+  updatePostFailure: (err) => err,
+});
+
+//Xóa bài viết
+export const deletePost = createActions({
+  deletePostRequest: (postId) => postId,
+  deletePostSuccess: (postId) => postId,
+  deletePostFailure: (err) => err,
 });
 
 export const showModal = createAction('SHOW_CREATE_POST_MODAL');
