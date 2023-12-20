@@ -1,10 +1,11 @@
 import { Button, Modal, TextareaAutosize, TextField } from '@material-ui/core';
 import FileBase64 from 'react-file-base64';
-import React from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { modalState$ } from '../../redux/selectors';
 import useStyles from './styles';
-import { createPost, hideModal } from '../../redux/actions';
+import { createPost, deletePost, hideModal } from '../../redux/actions';
 
 export default function CreatePostModal() {
 
@@ -18,6 +19,8 @@ export default function CreatePostModal() {
         title: '',
         content: '',
         attachment: '',
+        // Thêm để thực hiện chức năng xóa
+        postId: '', // Thêm trường postId
     });
 
 
@@ -31,14 +34,17 @@ export default function CreatePostModal() {
             title: '',
             content: '',
             attachment: '',
+            postId: '', // Reset postId khi đóng modal
         });
     }, [dispatch]);
 
     const onSubmit = React.useCallback(() => {
+        //tạo bài viết
         dispatch(createPost.createPostRequest(data));
+        //xóa
+        dispatch(deletePost.deletePostRequest(data.postId));
         onClose();
-    }, [data, dispatch, onClose]);
-
+    }, [data, dispatch, onClose, data.postId]);
 
 
     const body = (
@@ -91,4 +97,5 @@ export default function CreatePostModal() {
         </div>
     );
 }
+
 
