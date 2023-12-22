@@ -42,9 +42,12 @@ export default function CreatePostModal() {
         //tạo bài viết
         dispatch(createPost.createPostRequest(data));
         //xóa
-        dispatch(deletePost.deletePostRequest(data.postId));
+        // Nếu có postId, thì mới thực hiện yêu cầu xóa
+        if (data.postId) {
+            dispatch(deletePost.deletePostRequest(data.postId));
+        }
         onClose();
-    }, [data, dispatch, onClose, data.postId]);
+    }, [data, dispatch, onClose]);
 
 
     const body = (
