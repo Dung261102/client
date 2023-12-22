@@ -30,7 +30,9 @@ export default function Post({ post }) {
     const dispatch = useDispatch();
 
     //State để xác định vị trí menu mở
-    const [menuAnchorEl, setMenuAnchorEl] = useState(null);
+    const [menuAnchorEl, setMenuAnchorEl] = useState(null)
+    // postId: post.id, // Gán postId từ post vào data ban đầu
+    // });;
 
 
     // Mở menu khi bấm vào dấu ba chấm
@@ -43,7 +45,9 @@ export default function Post({ post }) {
         setMenuAnchorEl(null);
     };
 
-    const handleDeletePost = () => {
+    const handleDeletePost = (postId) => {
+        // Cập nhật giá trị postId trong data trước khi dispatch action
+        // setData({ ...data, postId: post.id });
         dispatch
             (deletePost(post.id)); // Gọi action xóa bài viết với postId
         handleMenuClose(); // Đóng menu sau khi xử lý xóa
