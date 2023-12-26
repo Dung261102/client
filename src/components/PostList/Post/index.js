@@ -45,11 +45,16 @@ export default function Post({ post }) {
         setMenuAnchorEl(null);
     };
 
-    const handleDeletePost = (postId) => {
-        // Cập nhật giá trị postId trong data trước khi dispatch action
-        // setData({ ...data, postId: post.id });
-        dispatch
-            (deletePost(post.id)); // Gọi action xóa bài viết với postId
+    // const handleDeletePost = (postId) => {
+    //     // Cập nhật giá trị postId trong data trước khi dispatch action
+    //     // setData({ ...data, postId: post.id });
+    //     dispatch
+    //         (deletePost(post.id)); // Gọi action xóa bài viết với postId
+    //     handleMenuClose(); // Đóng menu sau khi xử lý xóa
+    // };
+
+    const handleDeletePost = () => {
+        dispatch(deletePost.deletePostRequest(post._id)); // Gọi action xóa bài viết với postId
         handleMenuClose(); // Đóng menu sau khi xử lý xóa
     };
 
