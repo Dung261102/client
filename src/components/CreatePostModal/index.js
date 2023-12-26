@@ -63,8 +63,8 @@ export default function CreatePostModal() {
                 />
                 <TextareaAutosize
                     className={classes.textarea}
-                    rowsMin={10}
-                    rowsMax={15}
+                    minRows={10}
+                    maxRows={15}
                     placeholder='Content...'
                     value={data.content}
                     onChange={(e) => setData({ ...data, content: e.target.value })}
