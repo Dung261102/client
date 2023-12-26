@@ -59,9 +59,9 @@ export default function Post({ post }) {
     };
 
     const onLikeBtnClick = React.useCallback(() => {
-        dispatch(
-            updatePost.updatePostRequest({ ...post, likeCount: post.likeCount + 1 })
-        );
+        post.likeCount += 1;
+
+        dispatch(updatePost.updatePostRequest(post));
     }, [dispatch, post]);
 
     return (
